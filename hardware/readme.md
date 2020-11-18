@@ -21,24 +21,24 @@ As secondary priorities, we want the device to be comfortable and unobtrusive; u
 	* 3D printing is cheap, everywhere, and makes it easy to share. All other researchers need to do is download the CAD files.
 	* It allows for fast test-adjustment-test sprints.
 
-![3d printing](https://github.com/NTX-McGill/NeuroTechX-McGill-2020/blob/main/hardware/img/3d-printing.jpg?raw=true)
+![3d printing](https://github.com/NTX-McGill/NeuroTechX-McGill-2020/blob/main/hardware/img/3d-printing.JPG?raw=true)
 
 2. The armband would have holes or some kind of mesh to allow electrode placement anywhere on the band.
 	* This way, all electrode configurations are supported.
 
-![sample electrode configuration](https://github.com/NTX-McGill/NeuroTechX-McGill-2020/blob/main/hardware/img/electrode-config.jpg?raw=true)
+![sample electrode configuration](https://github.com/NTX-McGill/NeuroTechX-McGill-2020/blob/main/hardware/img/electrode-config.JPG?raw=true)
 
 ### Iterations
 1. We tried various 3D-printing techniques and patterns for a mesh for holding the electrodes.
 	* **Takeaways:** flexible TPU worked best, need to balance thickness for comfort and strength, found optimal mesh pattern
 
-![v1](https://github.com/NTX-McGill/NeuroTechX-McGill-2020/blob/main/hardware/img/v1.jpg?raw=true)
+![v1](https://github.com/NTX-McGill/NeuroTechX-McGill-2020/blob/main/hardware/img/v1.JPG?raw=true)
 
 2. A single piece of thick 3D-printed polymer wrapped around the wrist like a brace, extending a few inches below the wrist. The material had holes printed around areas where electrodes were usually placed. The armband is held tight by a Velcro strap.
 	* **Improvements:** adjustable for different electrode placements, mesh worked well 
 	* **Problems:** too thick, doesn't cover entire area where electrodes could be used, single Velcro strap didn't keep the whole band tight, limited mobility
 
-![v2](https://github.com/NTX-McGill/NeuroTechX-McGill-2020/blob/main/hardware/img/v2.jpg?raw=true)
+![v2](https://github.com/NTX-McGill/NeuroTechX-McGill-2020/blob/main/hardware/img/v2.JPG?raw=true)
 
 3. We kept the same general design, but made the material thinner (0.7mm) and used multiple Velcro straps.
 	* **Improvements:** more stable signal, more comfortable, less limited mobility
