@@ -1,0 +1,138 @@
+
+* Architecture
+
+[[file:./architecture_diagram.jpg]]
+
+* Usage
+
+** Interaction
+
+Keyboard inputs:
+- "space" :: select the most likely word
+- "backspace" :: delete last character if one exists, otherwise last word
+- "C-c" :: exit
+- "0" :: Enter word selection mode. Then select a word by pressing a lower case char associated with the desired index
+- lower case char :: input finger associated with character
+
+** Setup
+
+Environment (assuming python3):
+#+begin_src bash
+python -m venv venv
+source venv/bin/activate
+python -m pip install -r requirements.txt
+#+end_src
+
+Download a finger number prediction model into `NeuroTech-ML/models` and set the =model_file= variable in =backend.py=.
+
+Run:
+#+begin_src bash
+python backend.py
+#+end_src
+
+In order for the backend to run with =finger_mode = True=, Start the data stream in OpenBCI. In the networking widget, switch to LSL and set Stream 1 with the following settings:
+
+- Data Type :: "Timeseries"
+- Name :: obci_eeg1
+- Type :: EEG
+- # Chan :: 8
+
+Then press "Start" in the networking widget.
+
+** Parameters
+
+There are two configurable variables in backend.py
+
+- server_mode :: Indicates whether or not to emit predictions and data over socketio
+- finger_mode :: When true, reads signal data from OpenBCI and converts it to finger numbers. When false, reads keypresses from stdin and converts them to finger numbers.
+
+* Connecting with AR
+
+We maintain the state of the word being built in the backend, and send the frontend instructions for updating the UI accordingly.
+
+Backend state:
+- current finger word
+- finger selection mode
+
+Frontend state:
+- most likely words
+- finger selection mode
+- previously typed words
+- most recently typed character
+
+** Instructions
+*** Most Likely Words
+
+Instruction to update the most likely words in the frontend
+
+#+begin_src json
+  {
+    "message": "most_likely_words",
+    "words": ["word1", "word2", ...],
+  }
+#+end_src
+
+*** Enter Word Selection Mode
+
+Instruction to enter word selection mode in the frontend
+
+#+begin_src json
+  {
+    "message": "enter_word_selection"
+  }
+#+end_src
+
+*** Capture word
+
+Instruction to capture/select a word.
+
+#+begin_src json
+  {
+    "message": "select_word",
+    "word": "word2"
+  }
+#+end_src
+
+*** Delete Word
+
+Instruction to delete a word backwards
+
+#+begin_src json
+{
+  "message": "delete_word",
+}
+#+end_src
+
+*** Exit Typing Mode
+
+Instruction to leave typing mode
+
+#+begin_src json
+{
+  "message": "leave_typing_mode"
+}
+#+end_src
+
+*** Error Message
+
+Instruction to display error message. Potential errors:
+- could not enter word selection mode
+- could not select word
+
+#+begin_src json
+{
+  "message": "error_message",
+  "error_code": "could_not_select_word"
+}
+#+end_src
+
+* prediction_server.py
+
+Contains the PredictionServer class. Functions:
+
+- reads finger numbers from a queue
+- emits data for the dashboard and virtual reality clients via socketio
+- builds word predictions from a dictionary of most common english words
+
+The socketio server runs on port 4002.
+
