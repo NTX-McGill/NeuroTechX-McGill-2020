@@ -124,7 +124,7 @@ export default class App extends Component {
     displayLabels();
 
     socket.on("FingerProbs", function (data) {
-      updateChart(data);
+      updateChart(data["FingerProbs"]);
     });
   };
 

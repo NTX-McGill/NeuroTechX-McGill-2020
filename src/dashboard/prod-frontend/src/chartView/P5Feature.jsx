@@ -120,7 +120,7 @@ export default class App extends Component {
     displayLabels();
 
     socket.on("Feature_Data", function (data) {
-      updateChart(data);
+      updateChart(data["Feature_Data"]);
     });
   };
 

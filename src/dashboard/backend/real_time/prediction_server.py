@@ -19,7 +19,7 @@ class PredictionServer:
     #     "right_squeeze": 10,
     #     "left_and_right_squeeze": 11
     # }
-
+    
     # maps from finger number to possible finger letters
     # finger_number_to_letters = {
     #     "0": ["q", "a", "z"],
@@ -35,7 +35,7 @@ class PredictionServer:
     #     "10": ["\\x7f"],
     #     "11": ["\\x03"]
     # }
-
+    
     finger_name_to_finger_number = {
         "left_pinky": 9,
         "left_ring": 8,
@@ -50,7 +50,7 @@ class PredictionServer:
         "right_squeeze": 11,
         "left_and_right_squeeze": 12
     }
-
+    
     # maps from finger number to possible finger letters
     finger_number_to_letters = {
         "9": ["q", "a", "z"],
@@ -179,6 +179,7 @@ class PredictionServer:
     async def get_finger_number(self):
         # print("Pulling from queue")
         while self.queue.empty():
+            # print("Waiting on empty queue")
             await self.sio.sleep(0.01)
 
         queueItem = self.queue.get()
@@ -188,11 +189,9 @@ class PredictionServer:
             if self.server_mode:
                 for key, value in queueItem.items():
                     # print(key, value)
-                    await self.sio.emit(key, value)
-
-                await self.sio.emit('finger', {"number": queueItem['Finger']})
-
-            finger_number = str(queueItem['Finger'])
+                    await self.sio.emit(key, {key: value})
+                    
+            finger_number = str(queueItem["Finger"])
 
         else:
             # get character from keyboard
@@ -308,35 +307,36 @@ class PredictionServer:
 
             if self.server_mode:
                 self.send_error_code(code)
-
+                
         was_baseline = False
-        # spaces = 20
-
+        started = False
+                
         # continuously read characters
         while True:
-            # continue
-
-            # if spaces != 0:
-            #     await self.sio.emit('finger', {"number": "1"})
-            #     spaces -= 1
-
+            
+            
             finger_number = await self.get_finger_number()
-
-            # await handle_word_capture('test')
-            # continue
-
-            if finger_number == "0":
-                was_baseline = True
-            elif not was_baseline:
-                # print("Skipping")
+            
+            if self.finger_mode:
+                if finger_number == "0":
+                    was_baseline = True
+                elif not was_baseline:
+                    print("Skipping")
+                    continue
+                else:
+                    was_baseline = False
+                    
+            await self.sio.emit('finger', {'number': finger_number})
+            
+            if not started:
+                if finger_number == "1":
+                    started = True
                 continue
-            else:
-                was_baseline = False
-
+                    
             # type C-c to exit (left and right squeeze)
             # if finger_number == "12":
-            if finger_number == "10":  # left squeeze, reset finger word
-                # print("Word reset")
+            if finger_number == "10": # right squeeze, reset finger word
+                print("Word reset")
                 finger_word = ""
                 # handle_leave_typing_mode()
 
@@ -349,7 +349,7 @@ class PredictionServer:
                     print(f"No word to select")
                     # finger_word = ""
 
-            # type backspace to go back a character (right squeeze)
+            # type backspace to go back a character (left squeeze)
             elif finger_number == "11":
                 print("Deleting")
                 if (len(finger_word) == 0):
@@ -362,7 +362,7 @@ class PredictionServer:
 
             # type 0 to enter word selection mode (left squeeze)
             # elif finger_number == "10":
-            elif finger_number == "12":  # (left and right squeeze)
+            elif finger_number == "12": # (left and right squeeze)
                 if finger_word in self.word_groupings:
                     await handle_word_selection_mode(self.word_groupings[finger_word])
                 else:
@@ -378,6 +378,5 @@ class PredictionServer:
             print("")
 
     def startServer(self):
-        print("Starting server")
         self.sio.start_background_task(self.interactive_mode)
         web.run_app(self.app, host='0.0.0.0', port='4002')
