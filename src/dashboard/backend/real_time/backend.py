@@ -11,7 +11,15 @@ import time
 from real_time_class import Prediction
 from prediction_server import PredictionServer
 
-def mlproducer(queue):
+def keyboard_producer(queue):
+    while True:
+        # key = repr(readchar.readkey())[1:-1]
+        key = repr(input())[1:-1]
+        queue.put(key)
+        if key == "\\x03":
+            exit()
+
+def ml_producer(queue):
 
     BUFFER_SIZE_SECONDS = 0.5
     BUFFER_DIST_SECONDS = 0.5
@@ -98,26 +106,13 @@ if __name__ == "__main__":
 
     queue = Queue()
 
+    consumer = Process(target=consumer, args=(queue, server_mode, finger_mode))
+    consumer.daemon = True
+    consumer.start()
+
     if finger_mode:
-        producer = Process(target=mlproducer, args=(queue,))
-        consumer = Process(target=consumer, args=(queue, server_mode, finger_mode))
-
-        producer.start()
-        consumer.start()
-
-        consumer.join()
-        producer.join()
-
+        ml_producer(queue)
     else:
-        consumer = Process(target=consumer, args=(queue, server_mode, finger_mode))
+        keyboard_producer(queue)
 
-        consumer.start()
-
-        while True:
-            # key = repr(readchar.readkey())[1:-1]
-            key = repr(input())[1:-1]
-            queue.put(key)
-            if key == "\\x03":
-                exit()
-
-        consumer.join()
+    consumer.join()

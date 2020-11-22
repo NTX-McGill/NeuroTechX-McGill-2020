@@ -27,6 +27,11 @@ When finished check your dependencies with:
 pip list
 ```
 
+Start the backend with
+```
+python webapp_backend.py
+```
+
 ## CLI tool
 
 Make sure you have python version 3.8.0+
