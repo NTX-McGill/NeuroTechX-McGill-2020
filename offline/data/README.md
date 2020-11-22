@@ -69,10 +69,11 @@ This information can be found in `NeuroTechX-McGill-2020/offline/signal_processi
    * *Note: multiple channels may show activity when a single finger is moved. 
       The goal is to place electrodes such that, when different fingers are moved, the overall
       activity pattern (all 8 channels together) is different.*
-5. Make sure that there is good skin contact, otherwise the signal can be very noisy.
+5. Put the ground electrode on a bony area of the forearm (see electrode labelled **G** in image above)
+6. Make sure that there is good skin contact, otherwise the signal can be very noisy.
    Tighter contact can sometimes be achieved by placing the Velcro straps directly above the electrodes when securing the armband.
-6. If armband pieces are not available, use medical tape to secure the electrodes instead.
-7. Take pictures of the electrode configuration that achieves the best results, and refer to them for quicker setup in the future.
+7. If armband pieces are not available, use medical tape to secure the electrodes instead.
+8. Take pictures of the electrode configuration that achieves the best results, and refer to them for quicker setup in the future.
 
 ### Using the data collection dashboard
 
