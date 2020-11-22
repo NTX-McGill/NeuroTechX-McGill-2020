@@ -1,1 +1,1 @@
-# NeuroTechX-McGill-2020
+# EMGeyboard
