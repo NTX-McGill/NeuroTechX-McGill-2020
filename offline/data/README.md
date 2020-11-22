@@ -27,7 +27,7 @@ This information can be found in `NeuroTechX-McGill-2020/offline/signal_processi
 
 ### Setting up the OpenBCI board
 
-<!-- IMAGE -->
+![Cyton board](https://github.com/NTX-McGill/NeuroTechX-McGill-2020/blob/main/offline/data/img/cyton_board.png?raw=true)
 
 1. Connect the electrode cables to these 17 pins:
    * Bottom row of BIAS (for ground electrode).
@@ -38,20 +38,20 @@ This information can be found in `NeuroTechX-McGill-2020/offline/signal_processi
 
 ### Setting up the OpenBCI GUI
 
-<!-- IMAGE -->
-
 1. Launch the OpenBCI GUI.
 2. Select **LIVE (from Cyton)** > **Serial (from Dongle)** > **AUTO-CONNECT**. This should start the session.
+![GUI start session](https://github.com/NTX-McGill/NeuroTechX-McGill-2020/blob/main/offline/data/img/GUI_start_session.png?raw=true)
 3. Click **Start Data Stream** in the top right corner of the GUI.
 4. Click on **Hardware Settings** and do the following for all rows:
     * Set the **Bias** column to **Include**.
     * Set the **SRB2** column to **Off**.
     * *Note: in the middle of a session, if the EMG signals for all channels become very noisy and/or big heartbeat artifacts can be seen,
       check these settings again and make sure that they didn't change.*
+![GUI hardware seetting](https://github.com/NTX-McGill/NeuroTechX-McGill-2020/blob/main/offline/data/img/GUI_hardware_settings.png?raw=true)
 
 ### Putting on the armband
 
-<!-- IMAGES -->
+![armband and electrodes](https://github.com/NTX-McGill/NeuroTechX-McGill-2020/blob/main/offline/data/img/armband_electrodes.png?raw=true)
 
 1. Snap the electrodes to the electrode cables by passing them through holes in the armband.
 2. Wipe the skin surface and the electrodes with alcohol swabs.
@@ -76,7 +76,7 @@ This information can be found in `NeuroTechX-McGill-2020/offline/signal_processi
 
 ### Using the data collection dashboard
 
-<!-- IMAGE -->
+![data collection dashboard](https://github.com/NTX-McGill/NeuroTechX-McGill-2020/blob/main/offline/data/img/data_collection_dashboard.png?raw=true)
 
 1. Launch the data collection dashboard. See `NeuroTechX-McGill-2020/src/dashboard` for instructions.
 2. Click on the **DATA COLLECTION** tab.
@@ -97,7 +97,8 @@ This information can be found in `NeuroTechX-McGill-2020/offline/signal_processi
 To ensure that all participants use the same finger mapping when typing,
 ask them to follow the standard touch-typing finger mapping, as depicted below.
 
-<!-- IMAGE -->
+![finger mapping](https://github.com/NTX-McGill/NeuroTechX-McGill-2020/blob/main/offline/data/img/finger_mapping.png?raw=true)
+*Image source: [Wikipedia Commons](https://commons.wikimedia.org/wiki/File:Italian_keyboard_touchtyping.png)*
 
 ### Ending a trial
 1. On the dashboard, click **STOP RECORDING**.
