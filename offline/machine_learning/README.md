@@ -10,7 +10,7 @@
 * [Seaborn 0.10.0](https://seaborn.pydata.org/) or later
 
 ## Classification Problem
-We defined our classification problem to be a 10-class problem, where there were 9 classes for finger movement (representing all fingers excluding 1 thumb) and 1 class for no movement.
+We defined our classification problem to be a 10-class problem, where there were 9 classes for finger movement (representing all fingers excluding one thumb) and 1 class for no movement.
 
 ## Window Sizes
 We used different rolling window sizes of 200ms, 500ms, 1000ms, and noticed that increasing from 200ms to 500ms considerably improved accuracy, with the tradeoff of a noticeable response lag. Increasing from 500ms to 1000ms only gave a slight improvement to accuracy, likely because longer windows may accidentally capture several keypresses instead of one.
