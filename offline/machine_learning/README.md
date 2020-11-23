@@ -21,7 +21,7 @@ In our confusion matrix, we understood that some fingers were occasionally confu
 Heatmaps helped us refine our window size needed for prediction, as well as upper bounds on typing speed. This greatly supplemented the information we were getting based on the accuracies of the models given different varients of the data.
 For example, in an extreme case of rapid typing, we can observe heatmaps like the one below:
 
-![Poor predictions observed with fast typing](https://github.com/NTX-McGill/NeuroTechX-McGill-2020/blob/main/offline/machine_learning/simulate_prediction_rapid_typing.jpg)
+![Poor predictions observed with fast typing](https://github.com/NTX-McGill/NeuroTechX-McGill-2020/blob/main/offline/machine_learning/simulate_prediction_rapid.jpg)
 
 ### 3. Prototyping Live Simulated Predictions with Software
 Creating simulate_prediction.py was a milestone in realizing that heatmaps could be an incredibly useful tool for live analysis. Heatmaps of a similar style were produced by the software team to be displayed when the EMG armbands were responding to muscle potentials in real time. This provided a valuable form of neurofeedback to users, who could learn techniques to control the device with greater success (e.g. learning to make larger motions when typing with certain fingers or other needs based on the individual's unique physiology).
