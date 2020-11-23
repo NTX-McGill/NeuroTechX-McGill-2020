@@ -19,3 +19,8 @@ The keys above each option map to opening up one of the favorites (for example u
 Alternatively, the space bar can be pressed (moving the thumb) and the user has the ability to search from all the apps and open one up.
 While searching, the matched options show up above a letter which when pressed opens up the corrosponding app.<br>
 Apps open up scenes additively. These scenes can then update options and what letters pressed do in the console scene via the exposed public KeyboardWindowManager game object. For example, the function populateWindows allows for apps to change options and commands showed on screen.
+
+## Example Apps
+### Music
+The music app shows a simple usecase of an app that users would ideally be able to interact uninvasively whilst going about their day. Current solutions to interact with an AR device can be cumbersome - for example verbally dictating music choice can be awkard in public. With the EMGeyboard users would be able to view, pause, play, and choose music with one movement of the finger
+![music app scene screenshot](https://raw.githubusercontent.com/NTX-McGill/NeuroTechX-McGill-2020/main/src/unity_ar/music.png)
