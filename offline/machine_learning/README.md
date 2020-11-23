@@ -8,10 +8,12 @@ We used different rolling window sizes of 200ms, 500ms, 1000ms, and noticed that
 
 While we could have asked users to type slower, this would have made the product less useable, so we stuck to 500ms windows as the standard for typical trials and let the text prediction help supply additional information. Note that when we had good trials, we brought this back down to 200ms.
 
-## Models tested
-The best performing models were KNN and Logistic Regression. Each of these models consistently performed to acheive 75-85% accuracy with minimal tuning on regular trials. KNN achieved peak accuracy of 93.0% on 200ms good trials. However, LR converged much quicker, making it our go-to for rapid prototyping and experimenting with different features.
+## Models Tested and Results
+The best performing models were KNN and Logistic Regression. Each of these models consistently performed to acheive 70%+ accuracy with minimal tuning on regular trials. KNN achieved peak accuracy of 93.0% on 200ms good trials. However, LR converged much quicker, making it our go-to for rapid prototyping and experimenting with different features.
 
 We also experimented with other models, including Random Forest and SVM. We found that Random Forest almost performed to the same degree as KNN and LR, but always a few points worse. SVM was not robust, had a very long training time, and was overall not well suited for the data.
+
+![Table showing KNN, LR, and CART results based on trial lengths](https://github.com/NTX-McGill/NeuroTechX-McGill-2020/blob/main/offline/machine_learning/classification_results_table.png)
 
 ## Confusion Matrix
 Our confusion matrix revealed that the largest sources of error were cross-finger confusion, namely, pinkie-index confusion. This is likely due to the placement of the electrode tracking the index finger, since it was on a muscle on the outer side of the lower forearm.
