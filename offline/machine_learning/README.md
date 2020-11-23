@@ -1,7 +1,12 @@
 # Machine Learning
 
-We defined our classification problem to be a 10-class problem, where there were 9 classes for finger movement (representing all fingers excluding 1 thumb) and 1 class for no movement. We used different rolling window sizes of 200ms, 500ms, 1000ms, and noticed that increasing from 200ms to 500ms considerably improved accuracy, with the tradeoff of a noticeable response lag. Increasing from 500ms to 1000ms only gave a slight improvement to accuracy, likely because longer windows may accidentally capture several keypresses instead of one. While we could have asked users to type slower, this would have made the product less useable, so we stuck to 500ms windows for most cases and let the text prediction help supply additional information.
+## Classification Problem
+We defined our classification problem to be a 10-class problem, where there were 9 classes for finger movement (representing all fingers excluding 1 thumb) and 1 class for no movement.
 
+## Window sizes
+We used different rolling window sizes of 200ms, 500ms, 1000ms, and noticed that increasing from 200ms to 500ms considerably improved accuracy, with the tradeoff of a noticeable response lag. Increasing from 500ms to 1000ms only gave a slight improvement to accuracy, likely because longer windows may accidentally capture several keypresses instead of one. While we could have asked users to type slower, this would have made the product less useable, so we stuck to 500ms windows for most cases and let the text prediction help supply additional information.
+
+## Models tested
 The best performing models were KNN and Logistic Regression. SVM, Random Forest, and other classification methods gave inconsistent results.
 
 ## Prediction Heatmaps
