@@ -13,6 +13,14 @@ The best performing models were KNN and Logistic Regression. Each of these model
 
 We also experimented with other models, including Random Forest and SVM. We found that Random Forest almost performed to the same degree as KNN and LR, but always a few points worse. SVM was not robust, had a very long training time, and was overall not well suited for the data.
 
+## Confusion Matrix
+Our confusion matrix revealed that the largest sources of error were cross-finger confusion, namely, pinkie-index confusion. This is likely due to the placement of the electrode tracking the index finger, since it was on a muscle on the outer side of the lower forearm.
+
+![Confusion Matrix Matched with Heatmap](https://github.com/NTX-McGill/NeuroTechX-McGill-2020/blob/main/offline/machine_learning/confusion_matrix_and_heatmap.png)
+
+A: Confusion matrices of KNN models trained on 500 ms windows of data from all the trials (top) and 200 ms windows from only the “good” trials (bottom).
+B: Comparison between probability heatmap produced by the KNN model trained on the 500 ms, all trials dataset (top) and actual finger classes (bottom).
+
 ---
 
 # Prediction Heatmaps
