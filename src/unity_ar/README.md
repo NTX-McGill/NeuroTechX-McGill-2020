@@ -24,3 +24,6 @@ Apps open up scenes additively. These scenes can then update options and what le
 ### Music
 The music app shows a simple usecase of an app that users would ideally be able to interact uninvasively whilst going about their day. Current solutions to interact with an AR device can be cumbersome - for example verbally dictating music choice can be awkard in public. With the EMGeyboard users would be able to view, pause, play, and choose music with one movement of the finger
 ![music app scene screenshot](https://raw.githubusercontent.com/NTX-McGill/NeuroTechX-McGill-2020/main/src/unity_ar/music.png)
+### Mail
+The mail app offers a way for users to quickly respond to emails after getting a notification from the AR device.
+![mail app scene screenshot](https://raw.githubusercontent.com/NTX-McGill/NeuroTechX-McGill-2020/main/src/unity_ar/mail.png)
