@@ -52,5 +52,9 @@ Moreover, due to the windows overlapping, we also couldn't simply filter the win
 In light of this, for online data we filter the signal point-by-point and store the state of the signal coefficients at the start of the overlap between successive windows.
 This way we can correctly filter incoming windows as if we were doing it offline.
 
-The specific differences between the implementations of offline filter, which we call the `'original_filter'`, and the online filter, which we call the `'real_time_filter'`, can be seen in the file `filtering.py`.
+#### Remarks
+*  The specific differences between the implementations of offline filter, which we call the `'original_filter'`, and the online filter, which we call the `'real_time_filter'`, can be seen in the file `filtering.py`. 
+* For an example of windowed data, see [`window_plots`](https://github.com/NTX-McGill/NeuroTechX-McGill-2020/tree/main/offline/signal_processing/window_plots), which was generated using `plot_trials.py`. 
+* For actual window data, see [`windows`](https://github.com/NTX-McGill/NeuroTechX-McGill-2020/tree/main/offline/signal_processing/windows).
+* `constants.py` stores several constant variables we used across multiple files.
 
