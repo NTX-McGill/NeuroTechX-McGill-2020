@@ -61,7 +61,7 @@ Keyboard inputs:
 
 ### Setup
 
-Environment (assuming python3):
+Environment (requires python3):
 
 ```bash
 python -m venv venv
@@ -69,7 +69,7 @@ source venv/bin/activate
 python -m pip install -r requirements.txt
 ```
 
-Download a finger number prediction model into \`NeuroTech-ML/models\` and set the `model_file` variable in `backend.py`.
+Download a [finger number prediction model](https://github.com/NTX-McGill/NeuroTechX-McGill-2020/tree/main/offline/models) into \`NeuroTech-ML/models\` and set the `model_file` variable in `backend.py`.
 
 Run:
 
@@ -77,7 +77,7 @@ Run:
 python backend.py
 ```
 
-In order for the backend to run with `finger_mode = True`, Start the data stream in OpenBCI. In the networking widget, switch to LSL and set Stream 1 with the following settings:
+In order for the backend to run with `finger_mode = True`, Start the data stream in OpenBCIv4. In the networking widget, switch to LSL and set Stream 1 with the following settings:
 
 -   **Data Type:** "Timeseries"
 -   **Name:** obci<sub>eeg1</sub>
@@ -90,8 +90,8 @@ Then press "Start" in the networking widget.
 
 There are two configurable variables in backend.py
 
--   **server<sub>mode</sub>:** Indicates whether or not to emit predictions and data over socketio
--   **finger<sub>mode</sub>:** When true, reads signal data from OpenBCI and converts it to finger numbers. When false, reads keypresses from stdin and converts them to finger numbers.
+-   **server_mode:** Indicates whether or not to emit predictions and data over socketio
+-   **finger_mode:** When true, reads signal data from OpenBCI and converts it to finger numbers. When false, reads keypresses from stdin and converts them to finger numbers.
 
 ## Connecting with AR
 
@@ -179,13 +179,11 @@ Instruction to display error message. Potential errors:
 
 ## prediction_server.py
 
-Contains the PredictionServer class. Functions:
+Contains the PredictionServer class. Functionality:
 
 -   reads finger numbers from a queue
--   emits data for the dashboard and virtual reality clients via socketio
+-   emits data for the dashboard and virtual reality clients on port 40002 via a socketio server
 -   builds word predictions from a dictionary of most common english words
-
-The socketio server runs on port 4002.
 
 # Data Collection Backend
 
